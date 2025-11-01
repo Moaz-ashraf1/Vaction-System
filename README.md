@@ -103,3 +103,8 @@ This use case describes the process by which an employee submits, edits, or canc
 | 9        | **System**             | Sends a notification to the employee with the manager’s decision (approved/rejected).                            |
 | 10       | **System → HR Legacy** | If approved, the system updates the HR Legacy system and deducts the leave duration from the employee’s balance. |
 | 11       | **System**             | Updates the request status to **Approved** or **Rejected** accordingly.                                          |
+
+![Flow chart](Flowchart.drawio.png)
+<p align="center">
+  <em>Flow Chart Diagram</em>
+</p>
