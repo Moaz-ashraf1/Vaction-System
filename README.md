@@ -108,3 +108,66 @@ This use case describes the process by which an employee submits, edits, or canc
 <p align="center">
   <em>Flow Chart Diagram</em>
 </p>
+
+---
+
+
+## **Sequence Diagram: Employee Requests Vacation**
+**Scenario**: An employee submits a vacation request, the system validates balance, notifies the manager, and updates status.
+
+![Sequence Diagram](Sequence-Diagram.png)
+<p align="center">
+  <em>Sequence Diagram</em>
+</p>
+
+---
+
+
+## **Pseudocode: Vacation Request Algorithm**
+
+```pseudocode
+BEGIN RequestVacation
+    INPUT startDate, endDate
+    SET daysRequested = endDate - startDate
+
+
+    CALL GetBalanceFromHR(employeeID)
+    SET availableBalance = returnedValue
+
+    IF availableBalance < daysRequested THEN
+        DISPLAY "Error: Not enough vacation days"
+        DISPLAY "You have only " + availableBalance + " days"
+        SEND Email "Request failed: insufficient balance"
+        END PROCESS
+    ELSE
+        SET requestStatus = "Draft"
+        DISPLAY "Request submitted successfully"
+        DISPLAY "You can edit or cancel until manager reviews"
+        SEND Email "Your request is in draft. You can modify it."
+
+       
+        CALL NotifyManager(requestID)
+        SEND Email to Manager "New vacation request: ID " + requestID
+
+        
+        WAIT until Manager starts review
+        SET requestStatus = "Under Review"
+        DISPLAY "Request is now under review"
+        DISPLAY "Editing is no longer allowed"
+        SEND Email "Your request is under review. No changes allowed."
+
+        
+        IF Manager approves THEN
+            CALL DeductBalanceFromHR(daysRequested)
+            SET requestStatus = "Approved"
+            DISPLAY "Your vacation request is APPROVED!"
+            SEND Email "Approved! Enjoy your time off."
+        ELSE
+            SET requestStatus = "Rejected"
+            INPUT rejectionReason
+            DISPLAY "Request REJECTED: " + rejectionReason
+            SEND Email "Rejected: " + rejectionReason
+        END IF
+    END IF
+END
+```
