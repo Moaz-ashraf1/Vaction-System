@@ -84,7 +84,7 @@ In the past, all vacation time had to be approved by an immediate manager and th
 * **Manager:** Reviews and approves/rejects employee requests.
 * **HR Legacy System:** Provides leave balance data and updates balances after approvals.
 
-### **Description:**
+### 📝 **Description:**
 
 This use case describes the process by which an employee submits, edits, or cancels a vacation request, and how it’s reviewed and processed by the manager, with leave balances validated through the HR Legacy system.
 
@@ -216,7 +216,19 @@ END
 
 ## 🧾 Withdraw Use Case
 
+### 🎭 Actors:
+
+- **Employee:** Initiates the withdrawal process for a pending vacation request.  
+- **Manager:** Receives a notification when an employee withdraws a vacation request that was awaiting approval.  
+- **HR Legacy System:** Maintains vacation balances and stores all vacation-related records in the central database.
+
+---
+
+### 📝 Description:
+
 The *Withdraw Use Case* describes the process by which an employee withdraws a vacation request that has not yet been approved or rejected by a manager.  
+This ensures that pending requests can be properly managed, keeping the system and managers updated with accurate vacation statuses.  
+When an employee decides to withdraw a pending request, the system validates the user, confirms the action, updates the request status in the database, and notifies the manager via email.
 
 ---
 
