@@ -104,18 +104,60 @@ This use case describes the process by which an employee submits, edits, or canc
 | 10       | **System → HR Legacy** | If approved, the system updates the HR Legacy system and deducts the leave duration from the employee’s balance. |
 | 11       | **System**             | Updates the request status to **Approved** or **Rejected** accordingly.                                          |
 
-![Flow chart](Flowchart.drawio.png)
-<p align="center">
-  <em>Flow Chart Diagram</em>
-</p>
+## 🧭 **Flow Charts**
+
+1. **Manager – Approve/Reject Requests:**  
+   Shows how the manager views vacation requests, approves or rejects them, and triggers notifications to employees.
+
+   ![Flow chart - Manager Approve/Reject](Manager_ApproveReject_Flowchart.png)
+   <p align="center">
+     <em>Manager Approve/Reject Flowchart</em>
+   </p>
+
+2. **Manager – Request Vacation:**  
+   Describes how a manager submits their own vacation request, including validation and escalation to a higher manager if needed.
+
+   ![Flow chart - Manager Request Vacation](Manager_Request_Flowchart.png)
+   <p align="center">
+     <em>Manager Request Vacation Flowchart</em>
+   </p>
+
+3. **Employee – Request Vacation:**  
+   Explains the process for an employee to submit, edit, or cancel a vacation request.
+
+   ![Flow chart - Employee Request Vacation](Employee_Request_Flowchart.png)
+   <p align="center">
+     <em>Employee Request Vacation Flowchart</em>
+   </p>
+---
+## **ERD Diagram**
+![ERD Diagram](ERD.png)
 
 ---
 
 
 ## **Sequence Diagram: Employee Requests Vacation**
-**Scenario**: An employee submits a vacation request, the system validates balance, notifies the manager, and updates status.
 
-![Sequence Diagram](Sequence-Diagram.png)
+**Scenario**: The employee logs into the Vacation Tracking System (VTS), views existing vacation requests, and submits a new vacation request.  
+The system validates the request, updates the database, notifies the manager, and allows the employee to edit or cancel requests if needed.
+
+![Sequence Diagram](Emp_sequenceDiagram.png)
+<p align="center">
+  <em>Sequence Diagram</em>
+</p>
+
+
+---
+
+### 🧑‍💼 Manager Sequence Diagram
+
+This sequence diagram illustrates how the manager interacts with the Vacation Tracking System (VTS).  
+It shows the login and role verification process, viewing of employees’ vacation requests,  
+and how the manager can approve or reject requests while sending notifications to employees.  
+It also covers the scenario where the manager submits their own vacation request,  
+including validation, automatic approval, or escalation to a higher manager if required.
+
+![Sequence Diagram](Manager_sequenceDiagram.png)
 <p align="center">
   <em>Sequence Diagram</em>
 </p>
