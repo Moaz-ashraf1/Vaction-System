@@ -213,3 +213,34 @@ BEGIN RequestVacation
     END IF
 END
 ```
+
+## 🧾 Withdraw Use Case
+
+The *Withdraw Use Case* describes the process by which an employee withdraws a vacation request that has not yet been approved or rejected by a manager.  
+
+---
+
+### 🌀 Withdraw Request – Flowchart
+
+This flowchart illustrates the steps an employee follows to withdraw a pending vacation request in the Vacation Tracking System (VTS).  
+It shows how the system validates the user, checks the request status, updates the database, and notifies the manager once the request is successfully withdrawn.
+
+![Withdraw Flowchart](withdraw-flow-chart.png)
+<p align="center">
+  <em>Withdraw Request – Flowchart</em>
+</p>
+
+
+---
+
+### 🔁 Withdraw Request – Sequence Diagram
+
+This sequence diagram details the interactions between the employee, the portal, the validation service, the database, and the email server during the vacation withdrawal process.  
+It demonstrates login validation, data retrieval, user confirmation, database update, and notification handling for a withdrawn vacation request.
+
+
+![Withdraw Sequence Diagram](withdraw-sequence-diagram.png)
+<p align="center">
+  <em>Withdraw Request – Sequence Diagram</em>
+</p>
+
