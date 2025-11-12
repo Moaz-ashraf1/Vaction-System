@@ -335,3 +335,49 @@ This sequence diagram illustrates how the system components interact during the 
 
 ---
 
+# 🧾 Edit Pending Request
+
+### 🎭 Actors:
+- **Employee:** Initiates the edit or withdrawal of a pending vacation request.  
+- **Manager:** Reviews updated or withdrawn vacation requests.  
+- **HR Legacy System:** Stores and manages vacation request records and balances.
+
+---
+
+### 📝 Description:
+This use case allows the **employee** to modify or withdraw (delete) a vacation request that is still in **Pending** status.  
+The employee can update fields such as **title**, **comments**, or **dates**, or choose to withdraw/delete the request completely.  
+All actions must comply with the company’s vacation and HR policies.
+
+---
+
+### 🌀 Edit Pending Request – Flowchart
+
+<p align="center">
+  <img src="EditPendingRequests-Flowchart-diagram.png" width="450">
+  <br>
+  <em>Edit Pending Request – Flowchart</em>
+</p>
+
+---
+
+### 🔁 Edit Pending Request – Sequence Diagram
+
+<p align="center">
+  <img src="EditPendingRequests-Sequence-diagram.png">
+  <br>
+  <em>Edit Pending Request – Sequence Diagram</em>
+</p>
+
+---
+
+### 📌 Notes:
+- Only **Pending** requests can be edited or withdrawn.  
+- The system validates updated data (date overlaps, comments, length, etc.).  
+- Withdraw/Delete actions require confirmation before completion.  
+- Successful updates redirect the employee to the **VTS home page**.  
+- Errors are displayed with clear messages explaining the issue.
+
+---
+
+
