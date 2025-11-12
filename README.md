@@ -108,27 +108,33 @@ This use case describes the process by which an employee submits, edits, or canc
 
 1. **Manager – Approve/Reject Requests:**  
    Shows how the manager views vacation requests, approves or rejects them, and triggers notifications to employees.
+   
+<p align="center">
+  <img src="Manager_ApproveReject_Flowchart.png" width="400">
+  <br>
+  <em>Manager Approve/Reject Flowchart</em>
+</p>
 
-   ![Flow chart - Manager Approve/Reject](Manager_ApproveReject_Flowchart.png)
-   <p align="center">
-     <em>Manager Approve/Reject Flowchart</em>
-   </p>
+
 
 2. **Manager – Request Vacation:**  
    Describes how a manager submits their own vacation request, including validation and escalation to a higher manager if needed.
 
-   ![Flow chart - Manager Request Vacation](Manager_Request_Flowchart.png)
-   <p align="center">
-     <em>Manager Request Vacation Flowchart</em>
-   </p>
+<p align="center">
+  <img src="Manager_Request_Flowchart.png" width="400">
+  <br>
+  <em>Manager Request Vacation Flowchart</em>
+</p>
 
 3. **Employee – Request Vacation:**  
    Explains the process for an employee to submit, edit, or cancel a vacation request.
 
-   ![Flow chart - Employee Request Vacation](Employee_Request_Flowchart.png)
    <p align="center">
-     <em>Employee Request Vacation Flowchart</em>
+      <img src="Employee_Request_Flowchart.png" width="400">
+      <br>
+      <em>Employee Request Vacation Flowchart</em>
    </p>
+   
 ---
 ## **ERD Diagram**
 ![ERD Diagram](ERD.png)
@@ -237,8 +243,9 @@ When an employee decides to withdraw a pending request, the system validates the
 This flowchart illustrates the steps an employee follows to withdraw a pending vacation request in the Vacation Tracking System (VTS).  
 It shows how the system validates the user, checks the request status, updates the database, and notifies the manager once the request is successfully withdrawn.
 
-![Withdraw Flowchart](withdraw-flow-chart.png)
 <p align="center">
+  <img src="withdraw-flow-chart.png" width="400">
+  <br>
   <em>Withdraw Request – Flowchart</em>
 </p>
 
@@ -255,4 +262,76 @@ It demonstrates login validation, data retrieval, user confirmation, database up
 <p align="center">
   <em>Withdraw Request – Sequence Diagram</em>
 </p>
+
+---
+
+---
+
+# 🧾 Cancel Approved Vacation Request
+
+🎭 **Actors:**
+
+* **Employee:** Initiates the cancellation of an already approved vacation request.
+* **Portal + VTS:** Interface that handles authentication, validation, and display of vacation data.
+* **Validation Service:** Checks credentials and confirms eligibility for cancellation.
+* **Database (DB):** Stores vacation requests and updates balances.
+* **Manager:** Receives an email notification when an employee cancels an approved request.
+
+---
+
+## 📝 **Description**
+
+The **Cancel Approved Vacation Request** use case allows an employee to cancel a vacation request that has already been **approved**, as long as:
+
+* The vacation **hasn’t started yet**, or
+* It **started within the last 5 business days**.
+
+When the employee confirms the cancellation, the system:
+
+1. Updates the request status to **Canceled**
+2. **Restores the used vacation days** back to the employee’s available balance
+3. **Sends a notification** to the manager
+4. **Refreshes the vacation summary** on the portal
+
+If the employee chooses to abort, the system **makes no changes** and returns to the home page.
+
+---
+
+## 🌀 **Cancel Request – Flowchart**
+
+This flowchart shows the step-by-step logic the employee follows when canceling an approved vacation request in the VTS:
+
+* It starts with **logging into the system**, viewing the **vacation summary**, and selecting an approved request.
+* The system checks if the request is **eligible for cancellation** (future or recent).
+* The employee is then asked to **confirm or abort** the cancellation.
+* If confirmed, the system updates the request, restores the vacation balance, **notifies the manager**, and refreshes the summary view.
+* If not eligible or aborted, the system **shows an error or exits without changes**.
+
+<p align="center">
+  <img src="Cancel-Flowchart-diagram.png" width="400">
+  <br>
+  <em>Cancel Flowchart Diagram</em>
+</p>
+
+
+---
+
+## 🔁 **Cancel Request – Sequence Diagram**
+
+This sequence diagram illustrates how the system components interact during the cancellation process:
+
+* The **employee** logs into the **portal**, and credentials are validated via the **Validation Service** and **Database**.
+* The portal then displays the vacation summary (covering the past 6 months and next 18 months).
+* When the employee selects an approved vacation, the system checks eligibility.
+* If eligible, the portal prompts the user to confirm or abort.
+* Upon confirmation, the system **updates the request status**, **returns the vacation days**, **sends an email notification** to the manager, and **refreshes the summary view**.
+* If canceled or aborted, no updates occur.
+
+<p align="center">
+  <img src="Cancel-sequence-diagram.png" >
+  <br>
+  <em>Cancel sequence diagram </em>
+</p>
+
+---
 
